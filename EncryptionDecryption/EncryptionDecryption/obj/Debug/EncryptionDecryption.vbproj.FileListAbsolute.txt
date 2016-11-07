@@ -28,3 +28,13 @@ D:\VB.Net\EncryptionDecryption\EncryptionDecryption\bin\Debug\EncryptionDecrypti
 D:\VB.Net\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.vbprojResolveAssemblyReference.cache
 D:\VB.Net\EncryptionDecryption\EncryptionDecryption\obj\Debug\ConsoleApplication1.Resources.resources
 D:\VB.Net\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.vbproj.GenerateResource.Cache
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\bin\Debug\EncryptionDecryption.exe.config
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.exe
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.xml
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.pdb
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\bin\Debug\EncryptionDecryption.exe
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\bin\Debug\EncryptionDecryption.pdb
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\bin\Debug\EncryptionDecryption.xml
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.vbprojResolveAssemblyReference.cache
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\ConsoleApplication1.Resources.resources
+V:\Documents\GitHub\EncryptionDecryption\EncryptionDecryption\EncryptionDecryption\obj\Debug\EncryptionDecryption.vbproj.GenerateResource.Cache

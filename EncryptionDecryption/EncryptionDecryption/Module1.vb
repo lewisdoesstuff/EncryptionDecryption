@@ -1,9 +1,6 @@
-﻿Imports System
-Imports System.IO
-Imports System.Security
+﻿Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices
-Imports System.Text
 Module Module1
     Public Function GenerateRandomString(ByRef len As Integer, ByRef upper As Boolean) As String ' random string generator
         Dim rand As New Random() 'Create a new random value
@@ -15,13 +12,13 @@ Module Module1
 
         Return IIf(upper, final.ToUpper(), final) ' return string
     End Function
-    Sub EncryptFile(ByVal sInputFilename As String, _
-                   ByVal sOutputFilename As String, _
+    Sub EncryptFile(ByVal sInputFilename As String,
+                   ByVal sOutputFilename As String,
                    ByVal sKey As String)
 
-        Dim fsInput As New FileStream(sInputFilename, _
+        Dim fsInput As New FileStream(sInputFilename,
                                     FileMode.Open, FileAccess.Read)
-        Dim fsEncrypted As New FileStream(sOutputFilename, _
+        Dim fsEncrypted As New FileStream(sOutputFilename,
                                     FileMode.Create, FileAccess.Write)
 
         Dim DES As New DESCryptoServiceProvider()
@@ -30,8 +27,8 @@ Module Module1
         'Create the DES encryptor 
         Dim desencrypt As ICryptoTransform = DES.CreateEncryptor()
         'Create the crypto stream to encrypt the file
-        Dim cryptostream As New CryptoStream(fsEncrypted, _
-                                            desencrypt, _
+        Dim cryptostream As New CryptoStream(fsEncrypted,
+                                            desencrypt,
                                             CryptoStreamMode.Write)
 
         'Read the file text to the byte array.      cryptostreams are way better than reading every value in a text file
@@ -42,8 +39,8 @@ Module Module1
         cryptostream.Close()
     End Sub
 
-    Sub DecryptFile(ByVal sInputFilename As String, _
-        ByVal sOutputFilename As String, _
+    Sub DecryptFile(ByVal sInputFilename As String,
+        ByVal sOutputFilename As String,
         ByVal sKey As String)
 
         Dim DES As New DESCryptoServiceProvider()
@@ -113,11 +110,11 @@ Module Module1
                 Console.ForegroundColor = ConsoleColor.White
                 main()
             Else
-                Console.WriteLine("Please enter the file name stored in %project%\bin\debug\")
+                Console.WriteLine("Please enter the file name stored in %project%\bin\debug\ (If the file is in another location, please enter the FULL path)")
                 path = Console.ReadLine()
                 If File.Exists(path) Then
                     sSecretKey = GenerateRandomString(length, True) ' generate 8 digit key with numbers, using this instead of a 64 bit key because its human readable
-                    Console.WriteLine("Please enter the name of the file to save the encrypted text to (File will be created if it doesn't exist")
+                    Console.WriteLine("Please enter the name of the file to save the encrypted text to (File will be created if it doesn't exist) File will be stored in %project%\bin\debug\")
                     save = Console.ReadLine
                     EncryptFile(path,
                                      save,
@@ -143,14 +140,15 @@ Module Module1
                         Threading.Thread.Sleep(2000)
                         main()
                     ElseIf choice = 2 Then
-                        Console.WriteLine("Please copy down the sample key somewere")
+                        Console.WriteLine("Please copy down the encryption key somewere")
                         Console.Read()
                         main()
 
                     End If
-
+                Else
                     Console.WriteLine("file does not exist")
                     Threading.Thread.Sleep(2000)
+                    main()
                 End If
             End If
         ElseIf choice = 2 Then
@@ -161,7 +159,7 @@ Module Module1
             Console.WriteLine("Please enter the name of the file to decrypt")
             path = Console.ReadLine()
             If File.Exists(path) Then
-                Console.WriteLine("Please enter the name of the file to save the decrypted text to (File will be created if it doesn't exist")
+                Console.WriteLine("Please enter the name of the file to save the decrypted text to (File will be created if it doesn't exist) File will be stored in %project%\bin\debug\")
                 save = Console.ReadLine()
                 DecryptFile(path,
                             save,

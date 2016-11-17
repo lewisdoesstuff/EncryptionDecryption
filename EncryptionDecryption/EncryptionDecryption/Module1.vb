@@ -65,10 +65,9 @@ Module Module1
             final = final.Insert(i, " ")
             i += 6
         End While
-
-
         Console.WriteLine(final)
         My.Computer.FileSystem.WriteAllText(save & ".txt", final, False)
+        Console.ReadKey()
     End Sub
     Dim choice As String
     Dim path As String

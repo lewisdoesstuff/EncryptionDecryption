@@ -10,13 +10,19 @@ Module Module1
             key += temp
             ascii = ascii + Chr(temp).ToString
         Next
-        key = key / 8 ' 
+        key = key / 8
         key = Math.Floor(key * 100) / 100 ' math.
         key = key - 32
         Dim unencrypt As String
         unencrypt = My.Computer.FileSystem.ReadAllText(path) ' read file to string
         Dim encrypt As String = ""
         Dim offset As Integer
+        For i = 0 To 100
+            i = i + 1
+            Console.WriteLine(i & "%")
+            Threading.Thread.Sleep(50)
+            Console.Clear()
+        Next
         For i = 1 To unencrypt.Length
             offset = Asc(GetChar(unencrypt, i)) ' generate the offset
             If offset <> 32 Then

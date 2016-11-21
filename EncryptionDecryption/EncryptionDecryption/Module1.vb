@@ -1,5 +1,6 @@
 ﻿Imports System
 Imports System.IO 'imports
+Imports Microsoft.CSharp
 Module Module1
     Dim temp
     Dim key ' global declarations
@@ -9,7 +10,9 @@ Module Module1
             temp = CInt(Math.Floor((126 - 33 + 1) * Rnd())) + 33 ' generates random integer between 33 and 126
             key += temp
             ascii = ascii + Chr(temp).ToString
+
         Next
+
         key = key / 8
         key = Math.Floor(key * 100) / 100 ' math.
         key = key - 32
@@ -61,6 +64,8 @@ Module Module1
         Next
         Console.WriteLine(unencrypt) 'prints to console  
         My.Computer.FileSystem.WriteAllText(save, unencrypt, False) ' saves file with given name
+        Console.ReadLine()
+        main()
     End Sub
     Sub removewhitespace()
         Dim whitespace As String = My.Computer.FileSystem.ReadAllText(path & ".txt")
@@ -74,6 +79,7 @@ Module Module1
         Console.WriteLine(final)
         My.Computer.FileSystem.WriteAllText(save & ".txt", final, False)
         Console.ReadKey()
+        main()
     End Sub
     Dim choice As String
     Dim path As String
@@ -170,7 +176,7 @@ Module Module1
             Console.WriteLine("This will remove all whitespace and add a space every 5 letters, However. This will make the decrypted file harder to read as it will break original spacing.")
             Console.WriteLine("Enter the name of the Encrypted file saved in %project%\bin\debug\.")
             path = Console.ReadLine()
-            Console.WriteLine("Please enter the name of the file to be encrypted")
+            Console.WriteLine("Please enter the name of the file to save to")
             save = Console.ReadLine()
             removewhitespace()
 

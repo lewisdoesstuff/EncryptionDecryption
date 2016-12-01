@@ -1,18 +1,16 @@
 ﻿Imports System
 Imports System.IO 'imports
-Imports Microsoft.CSharp
 Module Module1
     Dim temp
     Dim key ' global declarations
     Dim ascii
     Sub encrypt()
+        Randomize()
         For k = 1 To intlength
             temp = CInt(Math.Floor((126 - 33 + 1) * Rnd())) + 33 ' generates random integer between 33 and 126
             key += temp
             ascii = ascii + Chr(temp).ToString
-
         Next
-
         key = key / 8
         key = Math.Floor(key * 100) / 100 ' math.
         key = key - 32
@@ -30,7 +28,7 @@ Module Module1
             offset = Asc(GetChar(unencrypt, i)) ' generate the offset
             If offset <> 32 Then
                 If offset > 126 Then
-                    encrypt = encrypt + Chr(offset + key)
+                    encrypt = encrypt + Chr((offset + key) - 94)
                 Else
                     encrypt = encrypt + Chr(offset + key) ' more offset generation
                 End If
@@ -161,8 +159,24 @@ Module Module1
             End If
         ElseIf choice = 2 Then
             ' Decrypt the file.
-            Console.WriteLine("Please enter your encryption key.")
-            ascii = Console.ReadLine() 'enter the secret key
+            Console.WriteLine("Would you like to paste from clipboard")
+            Console.WriteLine("1. Yes")
+            Console.WriteLine("2. No")
+
+            choice = Console.ReadLine()
+            If choice = 1 Then
+                Console.WriteLine(My.Computer.Clipboard.GetText())
+                ascii = My.Computer.Clipboard.GetText()
+            ElseIf choice = 2 Then
+                Console.WriteLine("Please enter your encryption key.")
+                ascii = Console.ReadLine() 'enter the secret key
+            Else
+                Console.WriteLine("Incorrect")
+                Threading.Thread.Sleep(1000)
+                main()
+
+            End If
+
             Console.WriteLine("Please enter the name of the file to decrypt stored in %project%\bin\debug\")
             path = Console.ReadLine()
             path = path & ".txt" ' get path and append .txt
@@ -193,6 +207,6 @@ Module Module1
                 Threading.Thread.Sleep(1000)
                 Console.ForegroundColor = ConsoleColor.White
             End If
-            End If
+        End If
     End Sub
 End Module
